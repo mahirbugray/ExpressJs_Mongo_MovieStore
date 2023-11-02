@@ -8,14 +8,26 @@ header
         ul.navbar-nav.flex-grow-1
           li.nav-item
             a.nav-link.text-white(href="/movies") Anasayfa
-          li.nav-item
-            a.nav-link.text-white(href="/movies/list") Film Listesi
-          li.nav-item
-            a.nav-link.text-white(href="/movies/addMovie") Film Ekle
-          li.nav-item
-            a.nav-link.text-white(href="/genres/list") Film Türleri
-          li.nav-item
-            a.nav-link.text-white(href="/genres/addGenre") Film Türü Ekle
-        form.d-flex(role='search' action='/movies/search' method='post')
-          input.form-control.me-2(name='search' type='search' placeholder='film giriniz' aria-label='Search')
+          if locals.isAuthenticated
+            li.nav-item
+              a.nav-link.text-white(href="/movies/list") Film Listesi
+            li.nav-item
+              a.nav-link.text-white(href="/movies/addMovie") Film Ekle
+            li.nav-item
+              a.nav-link.text-white(href="/genres/list") Film Türleri
+            li.nav-item
+              a.nav-link.text-white(href="/genres/addGenre") Film Tür Ekle
+            ul.navbar-nav.flex-grow-4.m-auto
+              li.nav-item
+                a.nav-link.text-white Hoşgeldiniz #{locals.user.name}
+              li.nav-item
+                a.nav-link.text-white(href="/users/logout") Çıkış Yap
+          else
+            ul.navbar-nav.flex-grow-4.m-auto
+              li.nav-item
+                a.nav-link.text-white(href="/users/login") Giriş Yap
+              li.nav-item
+                a.nav-link.text-white(href="/users/register") Kayıt Ol
+        form.d-flex(role='search' action="/movies/search" method='post')
+          input.form-control.me-2(name='search' type='search' placeholder='Film Giriniz' aria-label='Search')
           button.btn.btn-outline-success(type='submit') Ara

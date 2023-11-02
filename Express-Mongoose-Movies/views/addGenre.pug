@@ -2,7 +2,7 @@ extends layout
 block content
     h2 Film Türü Ekle
     .col-md-4
-        form(asp-action='addGenre' method='post')
+        form(action='addGenre' method='post')
             .form-group
             label.control-label Film Türü
             input.form-control(name='turAdi')

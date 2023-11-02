@@ -2,13 +2,13 @@ extends layout
 
 block content
     h1 Movies List
-    table.table.table-striped 
+    table.table.table-striped
         thead 
-            tr
+            tr 
                 th Film Adı
-                th Yönetmen
+                th Yönetmen 
                 th Oyuncular 
-                th 
+                th
         tbody
             each film in movies 
                 tr 
@@ -16,5 +16,5 @@ block content
                     td #{film.yonetmen}
                     td #{film.oyuncular}
                     td 
-                        a.btn.btn-primary.mx-1(href="/movies/edit/" + film._id) Edit
-                        a.btn.btn-primary(href="/movies/delete/" + film._id) Delete
+                        a.btn.btn-primary.mx-1(href="/movies/edit/" + film._id) Edit 
+                        a.btn.btn-primary(href="/movies/delete/" + film._id) Delete 

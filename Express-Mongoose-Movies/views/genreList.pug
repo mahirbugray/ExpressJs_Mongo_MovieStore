@@ -2,17 +2,17 @@ extends layout
 
 block content
     h1 Genres List
-    table.table.table-striped 
+    table.table.table-striped
         thead 
-            tr
+            tr 
                 th Tür Adı
-                th Açıklama
-                th 
+                th Açıklamalar 
+                th
         tbody
             each tur in genres 
                 tr 
                     td #{tur.turAdi}
                     td #{tur.aciklama}
                     td 
-                        a.btn.btn-primary.mx-1(href="/genres/edit/" + tur._id) Edit
-                        a.btn.btn-primary(href="/genres/delete/" + tur._id) Delete
+                        a.btn.btn-primary.mx-1(href="/genres/edit/" + tur._id) Edit 
+                        a.btn.btn-primary(href="/genres/delete/" + tur._id) Delete 

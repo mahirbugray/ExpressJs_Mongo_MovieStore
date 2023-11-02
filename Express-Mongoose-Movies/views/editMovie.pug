@@ -18,10 +18,10 @@ block content
             input.form-control(name='imageUrl' value=film.imageUrl)
             .form-group
             label.control-label Film Türü
-            select.form-select(name = 'selectedGenre')
-                each tur in turler
-                    if tur._id.toString() == film.turId.toString()
-                        option(selected value=tur._id) #{tur.turAdi}
+            select.form-select(name='genreId')
+                each tur in genres
+                    if tur._id.toString() === film.turId.toString()
+                        option(value=tur._id selected) #{tur.turAdi}
                     else 
                         option(value=tur._id) #{tur.turAdi}
             .form-group

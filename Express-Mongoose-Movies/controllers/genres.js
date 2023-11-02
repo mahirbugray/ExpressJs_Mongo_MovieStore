@@ -36,47 +36,45 @@ exports.postAddGenre = (req, res, next) => {
     })
 }
 
-exports.getEditGenre = (req, res, next) => {
-    Genre.findById({ _id: req.params.id })
-      .then((genre) => {
-        res.render("editGenre", {
-          title: "Film Türü Güncelle",
-          tur: genre,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  
-  exports.postEditGenre = (req, res, next) => {
+exports.getEditGenre = (req, res, next) => { 
+    Genre.findById({_id:req.params.id})
+    .populate('filmler', 'filmadi')
+    .then(genre => {
+        console.log(genre);
+        res.render('editGenre', {
+            title: 'film türü güncelle',
+            tur : genre
+        })
+    }).catch((err) => {
+        console.log(err)
+    })
+}
+
+exports.postEditGenre = (req, res, next) => { 
     const id = req.body.id;
     const turAdi = req.body.turAdi;
     const aciklama = req.body.aciklama;
-  
-    Genre.updateOne(
-      { _id: id },
-      {
+
+    Genre.updateOne({_id:id}, {
         $set: {
-          turAdi: turAdi,
-          aciklama: aciklama,
-        },
-      }
-    )
-      .then(() => {
-        res.redirect("/genres/list");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  
-  exports.getDeleteGenre = (req, res, next) => {
-    Genre.findByIdAndDelete({ _id: req.params.id })
-      .then(() => {
-        res.redirect("/genres/list");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+            turAdi: turAdi,
+            aciklama: aciklama          
+        }
+    })
+    .then(() => {
+        res.redirect('/genres/list')
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+exports.getDeleteGenre = (req, res, next) => {
+    Genre.findByIdAndDelete({_id:req.params.id})
+    .then(
+        () => {
+            res.redirect('/genres/list')
+        }
+    ).catch((err) => {
+        console.log(err)
+    })   
+}
