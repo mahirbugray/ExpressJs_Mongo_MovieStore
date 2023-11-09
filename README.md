@@ -24,7 +24,7 @@ ENG -> I developed a movie sales web application that performs CRUD operations o
 
 - Body-Parser
 
-- Cookie
+- Cookie Parser
 
 - Functions
  
